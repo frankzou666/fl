@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}" ></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}" ></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+</head>
+<body>
+ <div class="container col-md-6">
+
+            <h1>Bootstrap Style Form</h1>
+      <form method="post">
+         {{loginForm.csrf_token}}
+         <div class="form-group">
+             {{loginForm.username.label}}
+             {{loginForm.username(class='form-control')}}
+             {% for message in loginForm.username.errors %}
+               <small class="text-danger">{{message}}</small>
+             {% endfor %}
+         </div>
+
+         <div class="form-group">
+             {{loginForm.password.label}}
+            <!--       在页面的时候在， 也可以通过()加参数-->
+             {{loginForm.password(class='form-control')}}
+             {% for message in loginForm.password.errors %}
+               <small class="text-danger">{{message}}</small>
+             {% endfor %}
+         </div>
+
+       <div class="form-group">
+         {{loginForm.submit(class='btn btn-primary')}}
+       </div>
+
+      </form>
+
+
+
+
+
+ </div>
+
+
+</body>
+</html>
